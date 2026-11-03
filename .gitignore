@@ -1,0 +1,5 @@
+dist/
+*.user
+*.suo
+hotkey-status.txt
+self-test-result.txt
