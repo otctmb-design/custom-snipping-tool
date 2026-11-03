@@ -19,6 +19,8 @@ The original Windows Snipping Tool is not modified.
 - Clear preview and text, with ownership-checked clearing of the app's clipboard copy.
 - Persistent settings for auto-save, preview opening, sign-in startup, minimized
   startup, shortcuts, and button animation.
+- Original blue capture-frame and mint flash icon for the desktop, taskbar,
+  tray, and app header.
 
 ## Requirements
 
@@ -115,6 +117,8 @@ Interface borders are decorative and are not added to saved screenshots.
 - `src/Read-ScreenshotText.ps1`: local Windows OCR bridge.
 - `src/CustomSnippingTool.exe.manifest`: DPI-awareness and non-admin execution.
 - `build.ps1`: compilation and self-test runner.
+- `assets/build-icon.ps1`: generates the original multi-resolution Windows icon
+  and PNG artwork; the build embeds the icon in the executable.
 - `test-behavior.ps1` and `tests/BehaviorTests.cs`: interactive behavior tests.
 
 Self-tests cover rectangle cropping, off-screen bounds, freeform transparency,

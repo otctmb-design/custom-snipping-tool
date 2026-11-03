@@ -11,7 +11,9 @@ $output = Join-Path $PSScriptRoot 'dist'
 $source = Join-Path $PSScriptRoot 'src\CustomSnippingTool.cs'
 $manifest = Join-Path $PSScriptRoot 'src\CustomSnippingTool.exe.manifest'
 $executable = Join-Path $output 'CustomSnippingTool.exe'
-& $compiler /nologo /target:winexe /optimize+ /platform:x64 /reference:System.Windows.Forms.dll /reference:System.Drawing.dll /reference:System.Core.dll "/win32manifest:$manifest" "/out:$executable" $source
+& (Join-Path $PSScriptRoot 'assets\build-icon.ps1')
+$icon = Join-Path $PSScriptRoot 'assets\ScreenshotStudio.ico'
+& $compiler /nologo /target:winexe /optimize+ /platform:x64 /reference:System.Windows.Forms.dll /reference:System.Drawing.dll /reference:System.Core.dll "/win32manifest:$manifest" "/win32icon:$icon" "/out:$executable" $source
 if ($LASTEXITCODE -ne 0) { throw 'Compilation failed.' }
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'src\Read-ScreenshotText.ps1') -Destination $output
 $test = Start-Process -FilePath $executable -ArgumentList '--self-test' -Wait -PassThru
